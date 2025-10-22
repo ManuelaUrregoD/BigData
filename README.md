@@ -31,3 +31,39 @@ El objetivo es aplicar las capacidades de **procesamiento distribuido de Spark**
 | `NombreMunicipio` | Municipio donde ocurrió el evento |
 | `NumeroCasos` | Total de suicidios reportados |
 | `NumeroPoblacionObjetivo` | Población total del municipio (cuando aplica) |
+
+
+## ⚙️ Ejecución del Proyecto con Spark (Python)
+
+Sigue estos pasos para ejecutar el procesamiento batch en el entorno local utilizando **Apache Spark** y **Python**.
+
+### 🧾 Requisitos previos
+- Tener instalado **Python 3.8 o superior**.  
+- Tener instalado **Apache Spark** y configuradas las variables de entorno (`SPARK_HOME` y `PATH`).  
+- Tener instalado **Java 8 o superior**.  
+
+Puedes verificar las versiones ejecutando:
+```bash
+python --version
+spark-submit --version
+java -version 
+```
+
+# 1. Clonar el repositorio
+```bash
+git clone https://github.com/usuario/spark-batch-suicidios.git
+```
+
+# 2. Ejecutar el script
+```bash
+python spark_batch_suicidios.py
+```
+
+Una vez ejecutado, el script generará una carpeta con nombre similar a:
+output/suicidios_antioquia_batch_20251021_234500/
+
+Dentro encontrarás:
+
+eda_casos_por_anio.csv → Análisis de casos por año
+eda_casos_por_region.csv → Análisis de casos por región
+eda_causas_mortalidad.csv → Causas de mortalidad más frecuentes

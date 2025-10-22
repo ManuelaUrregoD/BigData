@@ -53,7 +53,7 @@ df = df.withColumn("anio", col("anio").cast("int"))
 df = df.withColumn("numeropoblacionobjetivo", col("numeropoblacionobjetivo").cast("int"))
 df = df.withColumn("numerocasos", col("numerocasos").cast("int"))
 
-# --- 🔍 Análisis Exploratorio (EDA) ---
+# --- Análisis Exploratorio (EDA) ---
 
 # Total de casos registrados
 total_casos = df.agg({"numerocasos": "sum"}).collect()[0][0]
@@ -76,22 +76,21 @@ eda_causas = df.groupBy("causamortalidad").agg(count("*").alias("frecuencia")).o
 print("\n⚰️ Causas de mortalidad más frecuentes:")
 eda_causas.show(10)
 
-# --- 💾 Guardar resultados procesados ---
-output_clean = os.path.join(OUTPUT_DIR, "dataset_limpio.parquet")
-output_anio = os.path.join(OUTPUT_DIR, "eda_casos_por_anio.csv")
-output_region = os.path.join(OUTPUT_DIR, "eda_casos_por_region.csv")
-output_causas = os.path.join(OUTPUT_DIR, "eda_causas_mortalidad.csv")
+# ---  Guardar resultados procesados ---
 
-# Guardar dataset limpio
-df.write.mode("overwrite").parquet(output_clean)
+# Definir rutas Parquet
+output_anio_parquet = os.path.join(OUTPUT_DIR, "eda_casos_por_anio.parquet")
+output_region_parquet = os.path.join(OUTPUT_DIR, "eda_casos_por_region.parquet")
+output_causas_parquet = os.path.join(OUTPUT_DIR, "eda_causas_mortalidad.parquet")
 
-# Guardar EDA (coalesce(1) para un solo CSV por análisis)
-eda_anio.coalesce(1).write.mode("overwrite").option("header", True).csv(output_anio)
-eda_region.coalesce(1).write.mode("overwrite").option("header", True).csv(output_region)
-eda_causas.coalesce(1).write.mode("overwrite").option("header", True).csv(output_causas)
+# Guardar EDA en Parquet
+eda_anio.write.mode("overwrite").parquet(output_anio_parquet)
+eda_region.write.mode("overwrite").parquet(output_region_parquet)
+eda_causas.write.mode("overwrite").parquet(output_causas_parquet)
+
+print(f"✅ EDA guardado en formato Parquet en: {OUTPUT_DIR}")
 
 print("\n✅ Resultados procesados guardados en:")
-print(f"   • Dataset limpio: {output_clean}")
 print(f"   • Casos por año: {output_anio}")
 print(f"   • Casos por región: {output_region}")
 print(f"   • Causas más comunes: {output_causas}")
