@@ -49,17 +49,17 @@ spark-submit --version
 java -version 
 ```
 
-# 1. Clonar el repositorio
+1. Clonar el repositorio
 ```bash
 git clone https://github.com/usuario/spark-batch-suicidios.git
 ```
 
-# 2. Moverse a la ruta
+2. Moverse a la ruta
 ```bash
 cd batch_spark
 ```
 
-# 3. Ejecutar el script
+3. Ejecutar el script
 ```bash
 python spark_batch_suicidios.py
 ```
@@ -72,3 +72,47 @@ Dentro encontrarás:
 - eda_casos_por_anio.csv → Análisis de casos por año
 - eda_casos_por_region.csv → Análisis de casos por región
 - eda_causas_mortalidad.csv → Causas de mortalidad más frecuentes
+
+
+## Ejecución del Streaming con Spark y Kafka
+
+Este proyecto utiliza **Apache Spark Structured Streaming** para procesar datos en tiempo real provenientes de **Kafka**.
+
+### Requisitos previos
+
+1. Tener **Kafka** y **Zookeeper** corriendo en tu máquina virtual.
+
+2. Tener **Python 3.x** y las librerías necesarias instaladas:
+
+   ```bash
+   pip install pyspark kafka-python
+   ```
+
+3. Asegúrate de que el tópico suicidios_data exista en Kafka:
+
+   ```bash
+   kafka-topics.sh --create --topic suicidios_data --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+   ```
+
+## Pasos para ejecutar
+
+1. Ejecutar el productor de datos
+Esto generará datos simulados y los enviará al tópico de Kafka:
+
+   ```bash
+   python3 kafka_producer.py
+
+   ```
+Deja esta terminal abierta para que los datos se envíen continuamente.
+
+2. Ejecutar el consumidor de Spark Streaming
+En otra terminal, ejecuta el script de Spark:
+
+   ```bash
+   spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.7 spark_streaming_consumer.py
+   ```
+- Esto leerá los datos del tópico suicidios_data.
+- Calculará estadísticas por país y género cada 1 minuto.
+- Mostrará los resultados en consola.
+
+
