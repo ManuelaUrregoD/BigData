@@ -8,7 +8,7 @@ from pyspark.sql.functions import col, count, avg
 # --- Configuración ---
 API_URL = "https://www.datos.gov.co/api/views/db67-sbus/rows.json?accessType=DOWNLOAD"
 TMP_JSON = "/tmp/suicidios_antioquia.json"
-OUTPUT_DIR = f"./output/suicidios_antioquia_batch_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+OUTPUT_DIR = f"./output/ejecución_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 print(f"OUTPUT_DIR = {OUTPUT_DIR}")

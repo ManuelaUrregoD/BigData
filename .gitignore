@@ -1,0 +1,55 @@
+# --- Archivos del sistema ---
+.DS_Store
+Thumbs.db
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+dist/
+build/
+.env
+.venv
+env/
+venv/
+pip-wheel-metadata/
+
+# --- Archivos temporales ---
+*.log
+*.tmp
+*.swp
+*.bak
+*.out
+
+# --- IDEs ---
+.vscode/
+.idea/
+*.iml
+
+# --- Spark y Hadoop ---
+spark-warehouse/
+metastore_db/
+derby.log
+
+# --- Datos descargados o generados ---
+/tmp/
+*.csv
+*.json
+*.parquet
+/output/
+data/
+datasets/
+
+# --- Archivos de configuración locales ---
+.env.local
+.env.dev
+.env.prod
+config/local_*.json
+
+# --- Archivos específicos de Mac ---
+.AppleDouble
+.LSOverride
+Icon?
