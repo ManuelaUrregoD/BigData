@@ -54,7 +54,12 @@ java -version
 git clone https://github.com/usuario/spark-batch-suicidios.git
 ```
 
-# 2. Ejecutar el script
+# 2. Moverse a la ruta
+```bash
+cd batch_spark
+```
+
+# 3. Ejecutar el script
 ```bash
 python spark_batch_suicidios.py
 ```
