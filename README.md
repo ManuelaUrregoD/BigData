@@ -64,6 +64,6 @@ output/suicidios_antioquia_batch_20251021_234500/
 
 Dentro encontrarás:
 
-eda_casos_por_anio.csv → Análisis de casos por año
-eda_casos_por_region.csv → Análisis de casos por región
-eda_causas_mortalidad.csv → Causas de mortalidad más frecuentes
+- eda_casos_por_anio.csv → Análisis de casos por año
+- eda_casos_por_region.csv → Análisis de casos por región
+- eda_causas_mortalidad.csv → Causas de mortalidad más frecuentes
