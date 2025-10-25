@@ -4,12 +4,16 @@ import random
 from kafka import KafkaProducer
 
 # Posibles valores simulados
-paises = ["Colombia", "México", "Argentina", "Chile", "Perú"]
+subregiones = [
+    "VALLE DE ABURRÁ", "NORDESTE", "NORTE", "BAJO CAUCA", 
+    "MAGDALENA MEDIO", "OCCIDENTE", "ORIENTE", 
+    "SUROESTE", "URABÁ"
+]
 generos = ["masculino", "femenino"]
 
 def generar_datos_suicidio():
     return {
-        "pais": random.choice(paises),
+        "nombresubregion": random.choice(subregiones),
         "anio": random.randint(2010, 2022),
         "genero": random.choice(generos),
         "numero_suicidios": random.randint(1, 50),

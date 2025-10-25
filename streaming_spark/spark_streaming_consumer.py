@@ -11,7 +11,7 @@ spark.sparkContext.setLogLevel("WARN")
 
 # Esquema de los datos JSON
 esquema = StructType([
-    StructField("pais", StringType()),
+    StructField("nombresubregion", StringType()),
     StructField("anio", IntegerType()),
     StructField("genero", StringType()),
     StructField("numero_suicidios", IntegerType()),
@@ -31,7 +31,7 @@ datos_parseados = datos_kafka.select(from_json(col("value").cast("string"), esqu
 
 # Calcular estadísticas por país y género cada 1 minuto
 estadisticas_ventana = datos_parseados \
-    .groupBy(window(col("marca_tiempo"), "1 minute"), col("pais"), col("genero")) \
+    .groupBy(window(col("marca_tiempo"), "1 minute"), col("nombresubregion"), col("genero")) \
     .agg(
         sum("numero_suicidios").alias("total_suicidios"),
         avg("poblacion").alias("promedio_poblacion")
