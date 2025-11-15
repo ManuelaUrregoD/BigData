@@ -91,8 +91,8 @@ eda_causas.write.mode("overwrite").parquet(output_causas_parquet)
 print(f"✅ EDA guardado en formato Parquet en: {OUTPUT_DIR}")
 
 print("\n✅ Resultados procesados guardados en:")
-print(f"   • Casos por año: {output_anio}")
-print(f"   • Casos por región: {output_region}")
-print(f"   • Causas más comunes: {output_causas}")
+print(f"   • Casos por año: {output_anio_parquet}")
+print(f"   • Casos por región: {output_region_parquet}")
+print(f"   • Causas más comunes: {output_causas_parquet}")
 
 spark.stop()
