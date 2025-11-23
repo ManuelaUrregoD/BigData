@@ -125,6 +125,8 @@ db.users.aggregate([
 ```
 Esta consulta usa $count para devolver cuántos documentos existen en la colección users. Es útil para estadísticas generales del sistema.
 
+![alt text](image-8.png)
+
 ### Total de ventas generadas
 ```js
 db.orders.aggregate([
@@ -134,6 +136,9 @@ db.orders.aggregate([
 Agrupa todos los pedidos y suma el campo total.
 El resultado muestra cuánto dinero ha generado la tienda en ventas.
 
+![alt text](image-9.png)
+
+
 ### Cantidad de productos por categoría
 ```js
 db.products.aggregate([
@@ -142,3 +147,5 @@ db.products.aggregate([
 ```
 Agrupa los productos por categoría y cuenta cuántos hay en cada una.
 Es útil para inventarios y clasificación.
+
+![alt text](image-10.png)
