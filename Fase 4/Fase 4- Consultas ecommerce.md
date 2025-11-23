@@ -42,6 +42,7 @@ Este documento contiene todas las consultas realizadas sobre la base de datos **
   "registration_date": "2025-11-03T14:30:00Z"
 }
 ```
+
 ![alt text](image.png)
 
 ### Selección de un producto
@@ -49,10 +50,12 @@ Este documento contiene todas las consultas realizadas sobre la base de datos **
 { name: "Smartphone Samsung Galaxy S24" }
 ```
 
+![alt text](image-2.png)
+
 ### Actualizatión de un usuario
 ```js
 db.users.updateMany(
-  { id: 16 },      
+  { id: 17 },      
   {
     $set: {       
       phone: "3007987767"
@@ -65,15 +68,20 @@ db.users.updateMany(
 )
 ```
 
+![alt text](image-3.png)
+
+
 ### Eliminación de una orden
 ```js
 db.orders.deleteOne(
-  { id: 150 },         
+  { id: 134 },         
   {
     writeConcern: { w: 1 }
   }
 )
 ```
+
+![alt text](image-4.png)
 
 # 3. Consultas de con filtros y operadores
 
