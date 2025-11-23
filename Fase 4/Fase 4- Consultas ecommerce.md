@@ -30,7 +30,7 @@ Este documento contiene todas las consultas realizadas sobre la base de datos **
 ```js
 {
   "_id": "6918e1a3b4f91f569a99db10",
-  "id": 116,
+  "id": 118,
   "name": "Carlos Pérez",
   "email": "carlos.perez@example.com",
   "address": {
@@ -42,6 +42,7 @@ Este documento contiene todas las consultas realizadas sobre la base de datos **
   "registration_date": "2025-11-03T14:30:00Z"
 }
 ```
+![alt text](image.png)
 
 ### Selección de un producto
 ```js
