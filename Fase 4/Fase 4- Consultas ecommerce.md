@@ -24,6 +24,7 @@ Este documento contiene todas las consultas realizadas sobre la base de datos **
 
 ---
 
+
 # 2. Consultas Básicas
 
 ### Insertar un usuario
@@ -50,7 +51,7 @@ Este documento contiene todas las consultas realizadas sobre la base de datos **
 { name: "Smartphone Samsung Galaxy S24" }
 ```
 
-![alt text](image-2.png)
+![alt text](image-1.png)
 
 ### Actualizatión de un usuario
 ```js
@@ -83,16 +84,20 @@ db.orders.deleteOne(
 
 ![alt text](image-4.png)
 
+
 # 3. Consultas de con filtros y operadores
 
 ### Usuarios con mas de 1 pedido
 ```js
 db.orders.aggregate([
-  { $group: { _id: "$user_id", total_pedidos: { $sum: 1 } } },
+  { $group: { _id: "$id", total_pedidos: { $sum: 1 } } },
   { $match: { total_pedidos: { $gt: 1 } } }
 ])
 ```
-Lista los usuararios con mas de 1 pedido 
+Lista los usuarios con mas de 1 pedido 
+En este caso ningun usuario tiene mas de 1 pedido. 
+
+![alt text](image-5.png)
 
 ### Productos con menor o igual a 5 en existencia
 ```js
@@ -100,10 +105,15 @@ db.products.find({ stock: { $lte: 5 } })
 ```
 Lista los productos con un valor menor o igual a 5 en existencia. 
 
+![alt text](image-6.png)
+
 ### Productos con precio mayor a 200.000
 ```js
 db.products.find({ price: { $gt: 200000 } })
 ```
+
+![alt text](image-7.png)
+
 
 # 4. Consultas de con filtros y operadores
 
